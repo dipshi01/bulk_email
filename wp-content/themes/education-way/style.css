@@ -1,0 +1,177 @@
+@import 'style-original.css';
+
+.lrm-inline .lrm-user-modal-container{
+   
+
+	
+	
+}
+body, button, input, select, textarea {
+    color: #0C6943;
+    font-family: 'Poppins', sans-serif;
+    line-height: -25.2;
+}
+.bg-footer-bottom {
+    background: #0C6943;
+    padding: 28px 0 23px 0;
+}
+
+.bg-page-header .page-header {
+    text-align: center;
+    border-bottom: none;
+    margin: 0;
+    padding: 16px 0;
+    position: relative;
+    z-index: 1;
+}
+.bg-page-header {
+    position: relative;
+    background-color: #105C3D;
+}
+.bg-page-header::after {
+
+    background:#0C6943;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+}
+.page-title h2 {
+
+    color: #ffd88e;
+}
+.page-header-content .breadcrumb li, .page-header-content .breadcrumb li a {
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffd88e;
+ 
+}
+.lrm-form a.button, .lrm-form button, .lrm-form button[type="submit"], .lrm-form #buddypress input[type="submit"], .lrm-form input[type="submit"] {
+    background: #105c3d;
+    color: #ffd88e;
+}
+.copyright-txt p a:hover {
+    color: #ffff;
+}
+.page-header-content .breadcrumb li a:hover {
+
+    color: #ffff;
+
+}
+.copyright-txt p a {
+
+    color: #ffd88e;
+    font-weight: 700;
+
+}
+.scroll-img {
+    background: #c0893c;
+  
+}
+.copyright-txt p {
+
+    margin-left: 10px;
+    font-size: 14px;
+    color: #ffd88e;
+    padding-top: 8px;
+
+}
+.wp-block-preformatted{
+	background-color:#ffff;
+	
+	
+}
+/*
+Admin css
+*/
+
+@import 'addons.css'
+.user-profile .profile-header .thumb{
+	height: 218px;
+	
+}
+.user-profile .profile-header .cover .cover-thumb-overlay {
+
+    background: rgba(0, 0, 0, 0) linear-gradient(rgba(232, 232, 232, 0) 50%, rgba(10, 10, 10, 0.52)) repeat scroll 0 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+	.navs-content {
+
+    padding: 0px;
+}
+pre {
+
+    border: 1px solid #f0f0f0;
+    font-size: 1rem;
+    line-height: 0.313;
+    margin: 0 0 1.75em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1.75em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+}
+.user-feed .post-panel .button {
+
+    float: left;
+    margin-left: 5px;
+
+}
+.user-feed .side-section .section-title {
+    padding:  0 10px 0;
+    font-weight: 600;
+    font-size: 16px;
+}
+.user-feed .feed-items .list-items .single .post-avatar {
+
+    width: 50px;
+    height: 72px;
+    overflow: hidden;
+    vertical-align: top;
+    margin-right: 18px;
+
+}
+.date hint--top{
+
+    position: relative;
+   
+
+}
+[class*="hint--"] {
+    position: relative;
+}
+.feed-items .list-items .single {
+
+    background: #e7e7e780;
+    margin: 15px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+
+}
+.user-feed .feed-items .list-items .single .post-avatar {
+
+   
+
+}
+.trail-items {
+
+   float:left;
+}      
+ 
+#learn-press-profile-header {
+
+    height: 100px;
+    background: #105c3d;
+    position: relative;
+    z-index: 100;
+
+}
