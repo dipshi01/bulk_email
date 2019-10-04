@@ -160,7 +160,15 @@
   <br>
   <!-- import-template -->
         <table class="table table-top-left" id="manage-lists-1">
-                <thead>
+                
+        <tbody>
+        <?php           $start = $_GET['offset']? (int) $_GET['offset']: 0;
+//  $sql = "SELECT * FROM `{$wpdb->prefix}mailer_lists` LIMIT $start, 10 ";
+                        $sqli = "SELECT * FROM `{$wpdb->prefix}mailer_templates` LIMIT $start, 10"; 
+                        $results = $wpdb->get_results($sqli);
+                        if($results){
+		?> 
+    		       <thead>
                         <tr class="table-headings" >
                                 <th>#ID</th>
                                 <th>Name</th> 
@@ -168,12 +176,8 @@
                                 <th>Last Update</th>
                                 <th>-</th>
                         </tr> 
-                </thead>     
-        <tbody>
-        <?php           $start = $_GET['offset']? (int) $_GET['offset']: 0;
-//  $sql = "SELECT * FROM `{$wpdb->prefix}mailer_lists` LIMIT $start, 10 ";
-                        $sqli = "SELECT * FROM `{$wpdb->prefix}mailer_templates` LIMIT $start, 10"; 
-                        $results = $wpdb->get_results($sqli);
+                        </thead>          
+    			<?php	
                         $i = 0;
                         $q = [];
                         foreach($results as $r){
@@ -215,15 +219,23 @@
                         }
         ?>
   </div>
+        <?php    } 
+			else {
+		                $error = 'No record exits !';
+		?>
+                <div class="update-nag" style="width:97%;" >
+      	        <?php echo $error ?>
+                </div> 
+                <?php
+	         } 
+	        ?>
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin">
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
         </script>
         <script> var data = $.parseJSON('<?php echo addslashes(json_encode($q)) ?>');
         </script>
-        <script>tinymce.init({
-      selector:'#content'}
-                      );
+        <script>tinymce.init({selector:'#content'});
         </script>
         <script>
                 function edit(id,anchor){

@@ -232,62 +232,42 @@
                         
                 </table>
         </form>
-      <!--  <form id="add-q-template" style="display:none;"  class="opened" action=""  method="POST"  enctype="multipart/form-data" >
-                <table class="form-table" style="border: 4px solid rgb(163, 183, 69);" id="import-template" >
-                      <tr style="background-color:#fefefe" >
-                                <td colspan="2"><h3 style="margin:0;" id="formlabel" >Import New Template</h3></td>
-                                   <td  colspan="2"><button id="close-btn" class="pull-right"  style="background-color:#ffff;border:none;" onclick="impTemp();">x</button></td>
-                                </tr>
-                        <tr style="background-color:#fefefe" >
-                                 <td colspan="4">
-                                       <input name="upload" id="upload" type="file"></td>
-                             
-                                </tr>
-                                
-                        <tr style="background-color:#FFF">
-                                <td colspan="4" ><input type="submit" value="Import Template" name="do" class="button button-primary" /><input type="hidden" name="id" class="skippable"  /></td>
-                        </tr>
-                        
-                </table>
-        </form>  
-      
-        <div id="view-template" class="container opened form-table" style="width:97%;display:none;background-color:#ffffff;border: 4px solid rgb(163, 183, 69);padding:10px;">
-        
-        
-       
-         </div> -->
+    
         <br>
                
       <!-- import-template -->
        
                
         <table class="table table-top-left" id="manage-lists-1">
-        <thead>
-           <tr class="table-headings" >
-                 <th>#ID</th>
-                 <th>Title</th>             
-                 <th>Sender Name</th>
-                 <th>Sender Email</th>
-                 <th>Receiver Name</th>             
-                 <th>Receiver Email</th>
-                  <th>SMTP HOST</th>
-                  <th>Encryption</th>
-                  <th>SMTP User</th>
-                  <th>SMTP Password</th>
-                  <th>SMTP Auth</th>
-                  <th>SMTP Port</th>
-                  <th>Last Updated</th>             
-                   <th>Edit</th>
-                           
-          </tr> 
-        </thead>     
+           
         <tbody>
-        <?php            $start = $_GET['offset']? (int) $_GET['offset']: 0;
-                      //  $sql = "SELECT * FROM `{$wpdb->prefix}mailer_lists` LIMIT $start, 10 ";
+        <?php           $start = $_GET['offset']? (int) $_GET['offset']: 0;
+                    
                         
                         $sqli = "SELECT * FROM `{$wpdb->prefix}mailer_aliases` LIMIT $start, 10"; 
                         $results = $wpdb->get_results($sqli);
-              
+                        if($results){
+	?> 
+    		        <thead>
+                                <tr class="table-headings" >
+        			        <th>#ID</th>
+        			        <th>title</th>             
+        			        <th>Sender Name</th>
+        			        <th>Sender Email</th>
+        			        <th>Receiver Name</th>
+        			        <th>Receiver Email</th>             
+        			        <th>SMTP Host</th>
+        			        <th>Encryption</th>
+        			        <th>SMTP User</th>
+        			        <th>SMTP Password</th>
+        			        <th>SMTP Auth</th>
+        			        <th>SMTP Port</th>
+        			        <th>Last Updated</th>             
+        			        <th>Edit</th>
+     				</tr>
+    			</thead>            
+    				
+              <?php
                         $i = 0;
                         $q = [];
                         foreach($results as $r){
@@ -346,13 +326,23 @@
                                 echo '<ul>';
                                 for($i = 1; $i <= $total_pages; $i++){
                                         $cls = $start/10 == ($i -1)? 'active': 'inactive';
-                                        echo '<li class="'.$cls.'" ><a href="?page=bulk-aliases&offset='.(10 * ($i - 1)).'" >'.$i.'</a></li>';
+                                        echo '<li class="'.$cls.'" ><a href="?page=bulk-alias&offset='.(10 * ($i - 1)).'" >'.$i.'</a></li>';
                                 }
                                 echo '</ul>';
                         }
                         
                 ?>
         </div>
+        <?php    } 
+			else {
+		                $error = 'No record exits !';
+		?>
+                <div class="update-nag" style="width:97%;" >
+      	        <?php echo $error ?>
+                </div> 
+                <?php
+	         } 
+	        ?>
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script> var data = $.parseJSON('<?php echo addslashes(json_encode($q)) ?>'); </script>
@@ -402,44 +392,32 @@
                         $('#add-q-form').slideDown();
                         
                         }
-                
-               //function impTemp(){
-                 //       $('[name=do]').val('Import Template');
-                  //      if ($('.opened').is(':visible')) 
-                   //             $('.opened').slideUp();
-                                
-                    //    $('#add-q-template').slideDown();
-                        
-                    //    }
-        
+            
         
         </script>
         <script>
-                function addressFunction() 
-                                { 
-                         if (document.getElementById('same').checked) 
-                                { 
+                function addressFunction() { 
+                         if (document.getElementById('same').checked){ 
                                 document.getElementById('receiver_name').value=document. 
                                 getElementById('sender_name').value; 
                                 document.getElementById('receiver_email').value=document. 
                                 getElementById('sender_email').value 
-                                } 
+                        } 
       
-                        else
-                                { 
+                        else{ 
                                 document.getElementById('receiver_name').value=""; 
                                 document.getElementById('receiver_email').value=""; 
-                                 } 
-                                } 
+                        } 
+                } 
         
         
         </script>
        
        <script> 
                             
-                $(document).ready(function(){
+        $(document).ready(function(){
                 
-                        $('.table-headings').find('th').css('background-color', $('#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu').css('background-color'))
+         $('.table-headings').find('th').css('background-color', $('#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu').css('background-color'))
          $('.one').find('a').css('color', $('#adminmenu .update-plugins').css('background-color'))
          $('.form-table').find('h3').css('color',$('#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu').css('background-color'))
          $('.form-table').css('border-color',$('#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu').css('background-color'))

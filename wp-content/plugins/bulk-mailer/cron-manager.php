@@ -1,7 +1,5 @@
 <?php
-          
-          
-           
+
         function view_all_crons(){
                 
                 $cron_jobs_in_db = get_option('cron');
@@ -27,9 +25,11 @@
         
                 global $wpdb;
              
-                $sqli = "SELECT * FROM `{$wpdb->prefix}mailer_campaigns`"; 
+                $sqli = "SELECT * FROM `{$wpdb->prefix}mailer_campaigns` WHERE `id`='$campaign_id'";
+                $id = $campaign_id;
                 $row = $wpdb->get_row($sqli);
-                
+               
+               
                 extract((array)$row);
             
                 
